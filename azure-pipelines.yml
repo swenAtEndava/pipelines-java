@@ -20,3 +20,11 @@ steps:
     publishJUnitResults: true
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
     goals: 'package'
+- task: AzureFunctionApp@2
+  inputs:
+    connectedServiceNameARM: 'AKF Bank Playground (b2787007-20ba-4ac3-88d4-6fe486507298)'
+    appType: 'functionAppLinux'
+    appName: 'akf-sample-azure-function'
+    package: '$(System.DefaultWorkingDirectory)/**/*.zip'
+    runtimeStack: 'JAVA|21'
+    deploymentMethod: 'auto'
